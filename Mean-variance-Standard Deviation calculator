@@ -1,1 +1,50 @@
+import numpy as np
 
+def calculate(list):
+  mean = []
+  variance = []
+  standardDeviation = []
+  maximum = []
+  minimum = []
+  total = []
+
+  try:
+   
+    ls = np.reshape(list, (3, 3))
+  except:
+    raise ValueError( "List must contain nine numbers.") 
+  
+  mean.append(np.mean(ls, axis=0).tolist())
+  mean.append(np.mean(ls, axis=1).tolist())
+  mean.append(np.mean(ls).tolist())  
+
+  variance.append(np.var(ls, axis=0).tolist())
+  variance.append(np.var(ls, axis=1).tolist())
+  variance.append(np.var(ls).tolist())
+
+  standardDeviation.append(np.std(ls, axis=0).tolist())
+  standardDeviation.append(np.std(ls, axis=1).tolist())
+  standardDeviation.append(np.std(ls).tolist())
+
+  maximum.append(np.amax(ls, axis=0).tolist())
+  maximum.append(np.amax(ls, axis=1).tolist())
+  maximum.append(np.amax(ls).tolist())  
+
+  minimum.append(np.amin(ls, axis=0).tolist())
+  minimum.append(np.amin(ls, axis=1).tolist())
+  minimum.append(np.amin(ls).tolist())
+
+  total.append(np.sum(ls, axis=0).tolist())
+  total.append(np.sum(ls, axis=1).tolist())
+  total.append(np.sum(ls).tolist())
+
+  calculations = {
+    'mean': mean,
+    'variance': variance,
+    'standard deviation': standardDeviation,
+    'max': maximum,
+    'min': minimum,
+    'sum': total
+  }
+
+  return calculations
